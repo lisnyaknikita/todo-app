@@ -27,19 +27,23 @@ function TodoItem({ todo, deleteTodo, onTogle, onEdit }: TodoItemProps) {
 
     return (
         <li
-            className="todo__item flex items-center gap-2 bg-zinc-700 mb-4 rounded-xl hover:bg-zinc-500 transition-colors">
-            <input id={`todo-${todo.id}`} type="checkbox" checked={todo.isCompleted} onChange={e=>e.target.value} className="ml-3 mt-0.5 bg-pink-300 hover:bg-pink-400 cursor-pointer w-5 h-5 border-3 border-rose-500 rounded checked:bg-rose-600" />
+            className={`todo__item ${todo.isCompleted === true && 'bg-blue-300 dark:bg-slate-700'} flex items-center justify-between bg-white mb-4 rounded-xl hover:bg-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 transition-colors`}>
+            <input id={`todo-${todo.id}`} type="checkbox" checked={todo.isCompleted} onChange={e=>e.target.value} className="ml-3 mt-0.5 bg-blue-300 hover:bg-blue-400 cursor-pointer w-5 h-5 border-3 border-blue-600 checked:bg-blue-700" 
+            onClick={() => togleTask(todo.id, todo.isCompleted)}
+            />
             <label
                 htmlFor={`todo-${todo.id}`}
-                className={`todo__item-title w-full cursor-pointer py-3 text-xl font-sans text-zinc-300 ${todo.isCompleted === true && 'line-through'}`}
-                onClick={() => togleTask(todo.id, todo.isCompleted)}
-            >{todo.title}</label>
-            <button
+                className={`todo__item-title pl-2 w-[170px] sm:max-w-[78%] sm:w-full whitespace-normal md:max-w-[90%] cursor-pointer py-2 sm:py-3 text-l sm:text-xl font-sans text-slate-900 dark:text-slate-300 ${todo.isCompleted === true && 'line-through'}`}
+            ><p className='overflow-x-hidden'>{todo.title}</p></label>
+            <div className="todo__item-btns ml-auto flex">
+                <button
                 onClick={() => editTodo(todo.id, todo.title)}
-                className='mr-2 rounded-xl px-2 py-2 bg-transparent hover:bg-blue-400 transition-colors'><MdModeEdit /></button>
+                className='mr-1 rounded-xl px-1 py-1 bg-transparent hover:bg-blue-400 transition-colors sm:mr-2 sm:rounded-xl sm:px-2 sm:py-2'><MdModeEdit /></button>
             <button
                 onClick={() => window.confirm("Do you really want to delete this task?") && delTodo(todo.id)}
-                className='mr-5 rounded-xl px-2 py-2 bg-transparent hover:bg-red-400 transition-colors'><AiFillDelete /></button>
+                className='mr-2 rounded-xl px-1 py-1 bg-transparent hover:bg-red-400 transition-colors sm:mr-5 sm:px-2 sm:py-2'><AiFillDelete /></button>
+            </div>
+            
         </li >
     );
 }

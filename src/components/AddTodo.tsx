@@ -27,10 +27,10 @@ export default function AddTodo({addNewTodo, todos, isAdding}: addTodoProps) {
     }
 
     return (
-        <div className='todo__add max-w-[700px] mx-auto bg-zinc-600 p-5 flex items-center rounded-xl'>
-            <input
+        <div className='todo__add max-w-[700px] mx-auto bg-white dark:bg-slate-600 p-3 sm:p-5 flex items-center rounded-xl'>
+            <input 
                 type="text"
-                className='p-3 text-zinc-300 w-full bg-transparent border-0 rounded-xl bg-zinc-800 outline-none'
+                className='p-2 sm:p-3 text-slate-900 dark:text-slate-300 w-full bg-transparent rounded-xl border-2 border-slate-900 outline-none'
                 placeholder='Enter the task name...'
                 value={taskName}
                 onChange={taskNameHandler}
@@ -38,7 +38,7 @@ export default function AddTodo({addNewTodo, todos, isAdding}: addTodoProps) {
             />
             <button
                 onClick={addTask}
-                className='p-3 bg-transparent bg-zinc-500 hover:bg-green-400 transition-colors rounded-xl ml-2'>
+                className='p-3 sm:p-4 bg-transparent border-2 border-slate-900 hover:bg-green-400 dark:hover:bg-green-600 transition-colors rounded-xl ml-2'>
                 {isAdding ? 'Adding...' : <VscAdd/>}
             </button>
         </div>
