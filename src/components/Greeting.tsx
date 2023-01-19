@@ -1,6 +1,7 @@
 import { ITodo } from "../types/types";
 import { useState } from "react";
 import { MdModeEdit } from 'react-icons/md'
+import Modal from "./Modal";
 
 interface GreetingProps {
   todos: ITodo[],
@@ -8,11 +9,16 @@ interface GreetingProps {
   setUserName: (userName: string) => void
 }
 function Greeting({ todos, userName, setUserName }: GreetingProps) {
+  const [name, setName] = useState('')
+  const [isOpen, setIsOpen] = useState(false)
 
-  function editName() {
-    const newName = prompt('Enter your name:', userName)
+  function editName(e: React.FormEvent) {
+    e.preventDefault()
+    setIsOpen(true)
+    const newName = name;
     newName && localStorage.setItem('userName', newName)
     newName && setUserName(newName)
+    newName && setIsOpen(false)
   }
 
   return (
@@ -25,6 +31,28 @@ function Greeting({ todos, userName, setUserName }: GreetingProps) {
         ><MdModeEdit /></button>
       </div>
       <p className="todo__greeting-text font-sans text-xl text-slate-800 dark:text-blue-200">You have {todos.length > 0 ? todos.length : '...'} tasks:</p>
+      {isOpen &&
+        <Modal>
+          <form action="submit" className='h-full flex flex-col justify-center relative'>
+            <h2 className='text-slate-300 text-center font-bold text-2xl mb-4'>We need your name</h2>
+            <input type="text"
+              placeholder='Enter your name...'
+              className='bg-transparent border border-slate-300 rounded-xl px-3 py-2 text-slate-300 outline-none mb-4'
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            <button
+              className='text-slate-300 px-3 py-2 border border-slate-300 rounded-xl w-1/2 mx-auto'
+              onClick={editName}
+            >Enter</button>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-0 right-0"
+            >❌</button>
+          </form>
+        </Modal>
+      }
+
     </div>
   );
 }

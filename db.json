@@ -1,56 +1,5 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "title": "first",
-      "isCompleted": false
-    },
-    {
-      "id": 2,
-      "title": "second",
-      "isCompleted": true
-    },
-    {
-      "id": 3,
-      "title": "jdglfjgldfjg",
-      "isCompleted": true
-    },
-    {
-      "id": 5,
-      "title": "fjshfksdfnsdkjfhsdhfdslfsdhf",
-      "isCompleted": false
-    },
-    {
-      "id": 6,
-      "title": "sdfhkjdhsfsdnfkdshjjsdhfksdjhfjkdssdnlfhdsfhsfhsd;f",
-      "isCompleted": false
-    },
-    {
-      "id": 7,
-      "title": "sdhfdshfsdjfkhfkjdjsnsjdhfsdhfhksdsf",
-      "isCompleted": false
-    },
-    {
-      "id": 8,
-      "title": null,
-      "isCompleted": false
-    },
-    {
-      "id": 9,
-      "title": "shdfkjdshfkshdkfhksdhfhsdf",
-      "isCompleted": false
-    },
-    {
-      "id": 10,
-      "title": "sdfkjhfkjdsfkjdsfkhsdkhf",
-      "isCompleted": false
-    },
-    {
-      "id": 11,
-      "title": "mvxmv.cmv",
-      "isCompleted": false
-    }
-  ],
+  "todos": [],
   "comments": [
     {
       "id": 1,

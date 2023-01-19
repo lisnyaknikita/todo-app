@@ -37,7 +37,7 @@ function App() {
         setTodos(newTodos)
     }
 
-    async function onToggle(id: number, isCompelted: boolean) {
+    async function onToggle(id: number, isCompleted: boolean) {
         const newTodos = todos.map(todo => {
             if (todo.id !== id) return todo;
             return {
@@ -47,11 +47,11 @@ function App() {
         })
         setTodos(newTodos)
         await axios.patch('http://localhost:3001/todos/' + id, {
-            isCompleted: !isCompelted
+            isCompleted: !isCompleted
         })
     }
 
-    async function onEdit(id: any, title: any) {
+    async function onEdit(id: number, title: string) {
         const newTaskName = prompt("Enter the new task name...", title)
         console.log(newTaskName)
         await axios.patch('http://localhost:3001/todos/' + id, {
